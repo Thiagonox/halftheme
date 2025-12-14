@@ -5,10 +5,35 @@ info:
   version: "1.0.0"
   target: "*"
   author: "HalfTheme"
+  icon: ""
   website: "https://github.com/Thiagonox/halftheme"
+  flags: ""
+
+admin:
+  view: "views/admin/index.blade.php"
+  controller: ""
+  css: "public/css/halftheme.css"
+  wrapper: ""
 
 dashboard:
   css: "public/css/halftheme.css"
+  wrapper: "views/wrapper/dashboard.blade.php"
+
+components: ""
 
 data:
+  directory: ""
   public: "public"
+
+console: ""
+requests: ""
+views: "views"
+app: ""
+
+routers:
+  application: ""
+  client: ""
+  web: ""
+
+database:
+  migrations: ""
