@@ -5,20 +5,10 @@ info:
   version: "1.0.0"
   target: "*"
   author: "HalfTheme"
-  icon: ""
   website: "https://github.com/Thiagonox/halftheme"
-  flags: ""
-
-admin:
-  view: ""
-  controller: ""
-  css: "public/css/halftheme.css"
-  wrapper: ""
 
 dashboard:
   css: "public/css/halftheme.css"
-  wrapper: ""
 
 data:
-  directory: ""
   public: "public"
