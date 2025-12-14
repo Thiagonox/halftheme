@@ -1,0 +1,842 @@
+/**
+ * HalfTheme - Modern Theme for Pterodactyl
+ * Version: 1.0.0
+ * Design System: shadcn/ui inspired
+ */
+
+/* ============================================
+   GOOGLE FONTS IMPORT
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+/* ============================================
+   CSS VARIABLES - LIGHT MODE (Default)
+   ============================================ */
+:root {
+  /* Core Colors */
+  --background: #f8f9fa;
+  --foreground: #0c0c1d;
+  --card: #ffffff;
+  --card-foreground: #0c0c1d;
+  --popover: #ffffff;
+  --popover-foreground: #0c0c1d;
+  
+  /* Brand Colors */
+  --primary: #ff00c8;
+  --primary-foreground: #ffffff;
+  --secondary: #f0f0ff;
+  --secondary-foreground: #0c0c1d;
+  --muted: #f0f0ff;
+  --muted-foreground: #0c0c1d;
+  --accent: #00ffcc;
+  --accent-foreground: #0c0c1d;
+  
+  /* Feedback Colors */
+  --destructive: #ff3d00;
+  --destructive-foreground: #ffffff;
+  --success: #22c55e;
+  --success-foreground: #ffffff;
+  --warning: #f59e0b;
+  --warning-foreground: #0c0c1d;
+  
+  /* UI Elements */
+  --border: #dfe6e9;
+  --input: #dfe6e9;
+  --ring: #ff00c8;
+  
+  /* Chart Colors */
+  --chart-1: #ff00c8;
+  --chart-2: #9000ff;
+  --chart-3: #00e5ff;
+  --chart-4: #00ffcc;
+  --chart-5: #ffe600;
+  
+  /* Sidebar */
+  --sidebar: #f0f0ff;
+  --sidebar-foreground: #0c0c1d;
+  --sidebar-primary: #ff00c8;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #00ffcc;
+  --sidebar-accent-foreground: #0c0c1d;
+  --sidebar-border: #dfe6e9;
+  --sidebar-ring: #ff00c8;
+  
+  /* Typography */
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, monospace;
+  
+  /* Spacing & Sizing */
+  --radius: 0.5rem;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --spacing: 0.25rem;
+  
+  /* Shadows */
+  --shadow-color: hsl(0 0% 0%);
+  --shadow-2xs: 0px 4px 8px -2px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0px 4px 8px -2px hsl(0 0% 0% / 0.05);
+  --shadow-sm: 0px 4px 8px -2px hsl(0 0% 0% / 0.10), 0px 1px 2px -3px hsl(0 0% 0% / 0.10);
+  --shadow: 0px 4px 8px -2px hsl(0 0% 0% / 0.10), 0px 1px 2px -3px hsl(0 0% 0% / 0.10);
+  --shadow-md: 0px 4px 8px -2px hsl(0 0% 0% / 0.10), 0px 2px 4px -3px hsl(0 0% 0% / 0.10);
+  --shadow-lg: 0px 4px 8px -2px hsl(0 0% 0% / 0.10), 0px 4px 6px -3px hsl(0 0% 0% / 0.10);
+  --shadow-xl: 0px 4px 8px -2px hsl(0 0% 0% / 0.10), 0px 8px 10px -3px hsl(0 0% 0% / 0.10);
+  --shadow-2xl: 0px 4px 8px -2px hsl(0 0% 0% / 0.25);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease;
+}
+
+/* ============================================
+   CSS VARIABLES - DARK MODE
+   ============================================ */
+.dark,
+[data-theme="dark"],
+html.dark,
+body.dark {
+  --background: #0c0c1d;
+  --foreground: #eceff4;
+  --card: #1e1e3f;
+  --card-foreground: #eceff4;
+  --popover: #1e1e3f;
+  --popover-foreground: #eceff4;
+  --primary: #ff00c8;
+  --primary-foreground: #ffffff;
+  --secondary: #1e1e3f;
+  --secondary-foreground: #eceff4;
+  --muted: #151530;
+  --muted-foreground: #8085a6;
+  --accent: #00ffcc;
+  --accent-foreground: #0c0c1d;
+  --destructive: #ff3d00;
+  --destructive-foreground: #ffffff;
+  --border: #2e2e5e;
+  --input: #2e2e5e;
+  --ring: #ff00c8;
+  --chart-1: #ff00c8;
+  --chart-2: #9000ff;
+  --chart-3: #00e5ff;
+  --chart-4: #00ffcc;
+  --chart-5: #ffe600;
+  --sidebar: #0c0c1d;
+  --sidebar-foreground: #eceff4;
+  --sidebar-primary: #ff00c8;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #00ffcc;
+  --sidebar-accent-foreground: #0c0c1d;
+  --sidebar-border: #2e2e5e;
+  --sidebar-ring: #ff00c8;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+html,
+body {
+  font-family: var(--font-sans) !important;
+  background-color: var(--background) !important;
+  color: var(--foreground) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  border-color: var(--border);
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+h1, h2, h3, h4, h5, h6,
+.text-2xl, .text-3xl, .text-4xl {
+  font-family: var(--font-sans) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.025em;
+  color: var(--foreground) !important;
+}
+
+p, span, div, a, li {
+  font-family: var(--font-sans) !important;
+}
+
+code, pre, .font-mono,
+[class*="monospace"] {
+  font-family: var(--font-mono) !important;
+}
+
+/* ============================================
+   NAVIGATION / HEADER
+   ============================================ */
+nav,
+header,
+.navigation,
+.navbar,
+[class*="Navigation"],
+[class*="Header"] {
+  background-color: var(--card) !important;
+  border-color: var(--border) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+/* Sidebar Styling */
+aside,
+.sidebar,
+[class*="Sidebar"],
+[class*="sidebar"] {
+  background-color: var(--sidebar) !important;
+  border-color: var(--sidebar-border) !important;
+  color: var(--sidebar-foreground) !important;
+}
+
+.sidebar a,
+aside a,
+[class*="Sidebar"] a {
+  color: var(--sidebar-foreground) !important;
+  transition: all var(--transition-fast);
+}
+
+.sidebar a:hover,
+aside a:hover,
+[class*="Sidebar"] a:hover {
+  color: var(--sidebar-primary) !important;
+  background-color: rgba(255, 0, 200, 0.1) !important;
+}
+
+.sidebar a.active,
+aside a.active,
+[class*="Sidebar"] a.active,
+.sidebar a[aria-current="page"],
+aside a[aria-current="page"] {
+  color: var(--sidebar-primary) !important;
+  background-color: rgba(255, 0, 200, 0.15) !important;
+  border-left: 3px solid var(--sidebar-primary) !important;
+}
+
+/* ============================================
+   CARDS & CONTAINERS
+   ============================================ */
+.card,
+.box,
+.panel,
+[class*="Card"],
+[class*="Panel"],
+[class*="Container"],
+.bg-white,
+.bg-neutral-700,
+.bg-neutral-800,
+.bg-neutral-900,
+.bg-gray-700,
+.bg-gray-800,
+.bg-gray-900 {
+  background-color: var(--card) !important;
+  color: var(--card-foreground) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow) !important;
+  transition: all var(--transition-base);
+}
+
+.card:hover,
+[class*="Card"]:hover {
+  box-shadow: var(--shadow-md) !important;
+  border-color: var(--primary) !important;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+button,
+.btn,
+[class*="Button"],
+[class*="button"],
+[type="submit"],
+[type="button"] {
+  font-family: var(--font-sans) !important;
+  font-weight: 500 !important;
+  border-radius: var(--radius) !important;
+  transition: all var(--transition-fast) !important;
+  cursor: pointer;
+}
+
+/* Primary Buttons */
+.btn-primary,
+[class*="primary"],
+button[class*="green"],
+button[class*="blue"],
+.bg-primary-500,
+.bg-primary-600,
+.bg-blue-500,
+.bg-blue-600,
+.bg-green-500,
+.bg-green-600,
+.bg-cyan-500,
+.bg-cyan-600 {
+  background: linear-gradient(135deg, var(--primary) 0%, #d600a8 100%) !important;
+  color: var(--primary-foreground) !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(255, 0, 200, 0.3) !important;
+}
+
+.btn-primary:hover,
+[class*="primary"]:hover,
+button[class*="green"]:hover,
+button[class*="blue"]:hover {
+  background: linear-gradient(135deg, #ff33d4 0%, var(--primary) 100%) !important;
+  box-shadow: 0 6px 20px rgba(255, 0, 200, 0.4) !important;
+  transform: translateY(-1px);
+}
+
+/* Secondary/Ghost Buttons */
+.btn-secondary,
+[class*="secondary"],
+button[class*="gray"],
+button[class*="neutral"] {
+  background-color: var(--secondary) !important;
+  color: var(--secondary-foreground) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.btn-secondary:hover,
+[class*="secondary"]:hover {
+  background-color: var(--muted) !important;
+  border-color: var(--primary) !important;
+}
+
+/* Destructive/Danger Buttons */
+.btn-danger,
+.btn-destructive,
+[class*="danger"],
+[class*="destructive"],
+button[class*="red"] {
+  background: linear-gradient(135deg, var(--destructive) 0%, #cc3300 100%) !important;
+  color: var(--destructive-foreground) !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(255, 61, 0, 0.3) !important;
+}
+
+.btn-danger:hover,
+.btn-destructive:hover,
+[class*="danger"]:hover {
+  background: linear-gradient(135deg, #ff5722 0%, var(--destructive) 100%) !important;
+  box-shadow: 0 6px 20px rgba(255, 61, 0, 0.4) !important;
+}
+
+/* Accent Buttons */
+.btn-accent,
+[class*="accent"] {
+  background: linear-gradient(135deg, var(--accent) 0%, #00ccaa 100%) !important;
+  color: var(--accent-foreground) !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3) !important;
+}
+
+/* ============================================
+   INPUTS & FORMS
+   ============================================ */
+input,
+textarea,
+select,
+.input,
+[class*="Input"],
+[class*="input"],
+[class*="Select"],
+[class*="Textarea"] {
+  font-family: var(--font-sans) !important;
+  background-color: var(--card) !important;
+  color: var(--foreground) !important;
+  border: 1px solid var(--input) !important;
+  border-radius: var(--radius) !important;
+  transition: all var(--transition-fast) !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+[class*="Input"]:focus,
+[class*="input"]:focus {
+  outline: none !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(255, 0, 200, 0.2) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted-foreground) !important;
+  opacity: 0.7;
+}
+
+/* Checkboxes & Radio */
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--primary) !important;
+}
+
+/* ============================================
+   TABLES
+   ============================================ */
+table {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  background-color: var(--card) !important;
+  border-radius: var(--radius-lg) !important;
+  overflow: hidden;
+}
+
+thead,
+th {
+  background-color: var(--muted) !important;
+  color: var(--foreground) !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--border) !important;
+  transition: background-color var(--transition-fast);
+}
+
+tbody tr:hover {
+  background-color: rgba(255, 0, 200, 0.05) !important;
+}
+
+td, th {
+  padding: 1rem !important;
+  border-color: var(--border) !important;
+}
+
+/* ============================================
+   ALERTS & NOTIFICATIONS
+   ============================================ */
+.alert,
+[class*="Alert"],
+[class*="Notification"],
+[class*="Toast"] {
+  border-radius: var(--radius) !important;
+  border-left: 4px solid !important;
+}
+
+.alert-success,
+[class*="success"] {
+  background-color: rgba(34, 197, 94, 0.1) !important;
+  border-left-color: var(--success) !important;
+  color: var(--success) !important;
+}
+
+.alert-warning,
+[class*="warning"] {
+  background-color: rgba(245, 158, 11, 0.1) !important;
+  border-left-color: var(--warning) !important;
+  color: var(--warning) !important;
+}
+
+.alert-danger,
+.alert-error,
+[class*="error"],
+[class*="danger"] {
+  background-color: rgba(255, 61, 0, 0.1) !important;
+  border-left-color: var(--destructive) !important;
+  color: var(--destructive) !important;
+}
+
+.alert-info,
+[class*="info"] {
+  background-color: rgba(0, 229, 255, 0.1) !important;
+  border-left-color: var(--chart-3) !important;
+  color: var(--chart-3) !important;
+}
+
+/* ============================================
+   MODALS & DIALOGS
+   ============================================ */
+.modal,
+.dialog,
+[class*="Modal"],
+[class*="Dialog"],
+[role="dialog"] {
+  background-color: var(--card) !important;
+  color: var(--card-foreground) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: var(--shadow-2xl) !important;
+}
+
+.modal-backdrop,
+.dialog-backdrop,
+[class*="Backdrop"],
+[class*="Overlay"] {
+  background-color: rgba(12, 12, 29, 0.8) !important;
+  backdrop-filter: blur(4px);
+}
+
+/* ============================================
+   DROPDOWNS & MENUS
+   ============================================ */
+.dropdown,
+.menu,
+[class*="Dropdown"],
+[class*="Menu"],
+[class*="Popover"] {
+  background-color: var(--popover) !important;
+  color: var(--popover-foreground) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.dropdown-item,
+.menu-item,
+[class*="MenuItem"] {
+  transition: all var(--transition-fast);
+}
+
+.dropdown-item:hover,
+.menu-item:hover,
+[class*="MenuItem"]:hover {
+  background-color: rgba(255, 0, 200, 0.1) !important;
+  color: var(--primary) !important;
+}
+
+/* ============================================
+   BADGES & TAGS
+   ============================================ */
+.badge,
+.tag,
+.chip,
+[class*="Badge"],
+[class*="Tag"],
+[class*="Chip"] {
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  padding: 0.25rem 0.75rem !important;
+  border-radius: 9999px !important;
+  background-color: var(--muted) !important;
+  color: var(--muted-foreground) !important;
+}
+
+.badge-primary,
+[class*="Badge"][class*="primary"] {
+  background-color: rgba(255, 0, 200, 0.2) !important;
+  color: var(--primary) !important;
+}
+
+.badge-success,
+[class*="Badge"][class*="success"],
+[class*="Badge"][class*="green"] {
+  background-color: rgba(34, 197, 94, 0.2) !important;
+  color: var(--success) !important;
+}
+
+.badge-danger,
+[class*="Badge"][class*="danger"],
+[class*="Badge"][class*="red"] {
+  background-color: rgba(255, 61, 0, 0.2) !important;
+  color: var(--destructive) !important;
+}
+
+/* ============================================
+   PROGRESS BARS
+   ============================================ */
+.progress,
+[class*="Progress"] {
+  background-color: var(--muted) !important;
+  border-radius: 9999px !important;
+  overflow: hidden;
+}
+
+.progress-bar,
+[class*="ProgressBar"],
+[class*="Progress"] > div {
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%) !important;
+  border-radius: 9999px !important;
+}
+
+/* ============================================
+   STATUS INDICATORS
+   ============================================ */
+.status-online,
+.status-running,
+[class*="online"],
+[class*="running"] {
+  color: var(--success) !important;
+}
+
+.status-online::before,
+.status-running::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--success);
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  animation: pulse 2s infinite;
+}
+
+.status-offline,
+.status-stopped,
+[class*="offline"],
+[class*="stopped"] {
+  color: var(--destructive) !important;
+}
+
+.status-starting,
+.status-stopping,
+[class*="starting"],
+[class*="stopping"] {
+  color: var(--warning) !important;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
+/* ============================================
+   SCROLLBARS
+   ============================================ */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+  transition: background var(--transition-fast);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* ============================================
+   TOOLTIPS
+   ============================================ */
+[data-tooltip],
+.tooltip,
+[class*="Tooltip"] {
+  background-color: var(--foreground) !important;
+  color: var(--background) !important;
+  font-size: 0.75rem !important;
+  padding: 0.5rem 0.75rem !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+/* ============================================
+   LINKS
+   ============================================ */
+a {
+  color: var(--primary) !important;
+  text-decoration: none !important;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent) !important;
+  text-decoration: underline !important;
+}
+
+/* ============================================
+   FILE MANAGER (Pterodactyl Specific)
+   ============================================ */
+[class*="FileManager"],
+[class*="file-manager"],
+.file-row {
+  background-color: var(--card) !important;
+}
+
+.file-row:hover {
+  background-color: rgba(255, 0, 200, 0.05) !important;
+}
+
+/* ============================================
+   CONSOLE (Pterodactyl Specific)
+   ============================================ */
+[class*="Console"],
+.console,
+.terminal,
+[class*="terminal"] {
+  background-color: #0a0a14 !important;
+  color: #00ffcc !important;
+  font-family: var(--font-mono) !important;
+  border-radius: var(--radius-lg) !important;
+  border: 1px solid var(--border) !important;
+}
+
+/* Console input */
+[class*="Console"] input,
+.console input,
+.terminal input {
+  background-color: transparent !important;
+  color: var(--accent) !important;
+  border: none !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+/* ============================================
+   CHARTS (Pterodactyl Specific)
+   ============================================ */
+[class*="Chart"],
+.chart,
+canvas {
+  border-radius: var(--radius) !important;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.text-primary { color: var(--primary) !important; }
+.text-accent { color: var(--accent) !important; }
+.text-muted { color: var(--muted-foreground) !important; }
+.text-success { color: var(--success) !important; }
+.text-warning { color: var(--warning) !important; }
+.text-danger { color: var(--destructive) !important; }
+
+.bg-primary { background-color: var(--primary) !important; }
+.bg-accent { background-color: var(--accent) !important; }
+.bg-muted { background-color: var(--muted) !important; }
+
+.border-primary { border-color: var(--primary) !important; }
+.border-accent { border-color: var(--accent) !important; }
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary); }
+  50% { box-shadow: 0 0 20px var(--primary), 0 0 30px var(--primary); }
+}
+
+.animate-fadeIn { animation: fadeIn 0.3s ease forwards; }
+.animate-slideIn { animation: slideIn 0.3s ease forwards; }
+.animate-glow { animation: glow 2s ease-in-out infinite; }
+
+/* ============================================
+   PTERODACTYL SPECIFIC OVERRIDES
+   ============================================ */
+
+/* Main content area */
+main,
+[class*="MainContent"],
+.content-wrapper {
+  background-color: var(--background) !important;
+}
+
+/* Server status pills */
+[class*="StatusPill"],
+.status-pill {
+  font-weight: 500 !important;
+  padding: 0.35rem 1rem !important;
+}
+
+/* Resource usage bars */
+[class*="ResourceBar"],
+.resource-bar {
+  background-color: var(--muted) !important;
+}
+
+[class*="ResourceBar"] > div,
+.resource-bar > div {
+  background: linear-gradient(90deg, var(--accent) 0%, var(--primary) 100%) !important;
+}
+
+/* Server list items */
+[class*="ServerRow"],
+.server-row {
+  background-color: var(--card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  margin-bottom: 0.75rem !important;
+  transition: all var(--transition-base);
+}
+
+[class*="ServerRow"]:hover,
+.server-row:hover {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 1px var(--primary), var(--shadow-md) !important;
+}
+
+/* Footer */
+footer {
+  background-color: var(--card) !important;
+  border-top: 1px solid var(--border) !important;
+  color: var(--muted-foreground) !important;
+}
+
+/* Loading spinners */
+[class*="Spinner"],
+.spinner,
+.loading {
+  border-color: var(--muted) !important;
+  border-top-color: var(--primary) !important;
+}
+
+/* Empty states */
+[class*="EmptyState"],
+.empty-state {
+  color: var(--muted-foreground) !important;
+}
+
+/* Breadcrumbs */
+[class*="Breadcrumb"],
+.breadcrumb {
+  color: var(--muted-foreground) !important;
+}
+
+[class*="Breadcrumb"] a,
+.breadcrumb a {
+  color: var(--primary) !important;
+}
+
+/* Tabs */
+[class*="Tab"],
+.tab {
+  color: var(--muted-foreground) !important;
+  transition: all var(--transition-fast);
+}
+
+[class*="Tab"].active,
+[class*="Tab"][aria-selected="true"],
+.tab.active {
+  color: var(--primary) !important;
+  border-bottom-color: var(--primary) !important;
+}
+
+[class*="Tab"]:hover,
+.tab:hover {
+  color: var(--primary) !important;
+}
+
+/* Icons */
+svg,
+[class*="Icon"] {
+  transition: color var(--transition-fast);
+}
