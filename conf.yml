@@ -1,8 +1,8 @@
 info:
   name: "HalfTheme"
   identifier: "halftheme"
-  description: "A modern, clean theme for Pterodactyl with vibrant neon colors (Magenta/Cyan) and shadcn-inspired design system."
-  version: "1.0.0"
+  description: "A modern, premium UI for Pterodactyl with glassmorphism, custom components and neon colors."
+  version: "2.0.0"
   target: "*"
   author: "HalfTheme"
   icon: ""
@@ -19,7 +19,7 @@ dashboard:
   css: "public/css/halftheme.css"
   wrapper: "views/wrapper/dashboard.blade.php"
 
-components: ""
+components: "components.yml"
 
 data:
   directory: ""
@@ -28,7 +28,7 @@ data:
 console: ""
 requests: ""
 views: "views"
-app: ""
+app: "components"
 
 routers:
   application: ""

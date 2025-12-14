@@ -1,7 +1,7 @@
 /**
- * HalfTheme - Modern Theme for Pterodactyl
- * Version: 1.0.0
- * Design System: shadcn/ui inspired
+ * HalfTheme - Premium UI for Pterodactyl
+ * Version: 2.0.0
+ * Design System: shadcn/ui + Glassmorphism
  */
 
 /* ============================================
@@ -1213,4 +1213,348 @@ html body>div>div>div {
 .text-neutral-500,
 .text-neutral-600 {
     color: var(--muted-foreground) !important;
+}
+
+/* ============================================
+   GLASSMORPHISM EFFECTS
+   ============================================ */
+
+.glass,
+.glass-card {
+    background: rgba(30, 30, 63, 0.7) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.glass-strong {
+    background: rgba(30, 30, 63, 0.85) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+/* ============================================
+   NEON BORDER EFFECTS
+   ============================================ */
+
+.neon-border,
+.neon-card {
+    border: 1px solid transparent !important;
+    background:
+        linear-gradient(var(--card), var(--card)) padding-box,
+        linear-gradient(135deg, #ff00c8, #00ffcc) border-box !important;
+    border-radius: var(--radius-lg) !important;
+}
+
+.neon-glow {
+    box-shadow:
+        0 0 5px rgba(255, 0, 200, 0.3),
+        0 0 10px rgba(255, 0, 200, 0.2),
+        0 0 20px rgba(255, 0, 200, 0.1) !important;
+}
+
+.neon-glow-accent {
+    box-shadow:
+        0 0 5px rgba(0, 255, 204, 0.3),
+        0 0 10px rgba(0, 255, 204, 0.2),
+        0 0 20px rgba(0, 255, 204, 0.1) !important;
+}
+
+/* ============================================
+   HOVER LIFT EFFECTS
+   ============================================ */
+
+.hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.hover-lift:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+}
+
+.hover-glow:hover {
+    box-shadow:
+        0 0 20px rgba(255, 0, 200, 0.4),
+        0 10px 40px rgba(255, 0, 200, 0.2) !important;
+}
+
+.hover-scale {
+    transition: transform 0.2s ease !important;
+}
+
+.hover-scale:hover {
+    transform: scale(1.02) !important;
+}
+
+/* ============================================
+   GRADIENT TEXT
+   ============================================ */
+
+.gradient-text,
+.text-gradient {
+    background: linear-gradient(135deg, #ff00c8 0%, #00ffcc 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+.gradient-text-reverse {
+    background: linear-gradient(135deg, #00ffcc 0%, #ff00c8 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+/* ============================================
+   PREMIUM ANIMATIONS
+   ============================================ */
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px rgba(255, 0, 200, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(255, 0, 200, 0.6), 0 0 40px rgba(255, 0, 200, 0.3);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+@keyframes border-dance {
+
+    0%,
+    100% {
+        border-color: rgba(255, 0, 200, 0.5);
+    }
+
+    50% {
+        border-color: rgba(0, 255, 204, 0.5);
+    }
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite !important;
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite !important;
+}
+
+.animate-shimmer {
+    background: linear-gradient(90deg,
+            var(--card) 0%,
+            rgba(255, 0, 200, 0.1) 50%,
+            var(--card) 100%) !important;
+    background-size: 200% 100% !important;
+    animation: shimmer 2s linear infinite !important;
+}
+
+.animate-border-dance {
+    animation: border-dance 3s ease-in-out infinite !important;
+}
+
+/* ============================================
+   EMPTY STATE STYLING
+   ============================================ */
+
+.empty-state,
+[class*="EmptyState"],
+[class*="empty-state"],
+[class*="NoServers"],
+[class*="no-servers"] {
+    text-align: center !important;
+    padding: 3rem 2rem !important;
+    background: linear-gradient(135deg, rgba(30, 30, 63, 0.5) 0%, rgba(12, 12, 29, 0.7) 100%) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(46, 46, 94, 0.5) !important;
+    border-radius: 16px !important;
+    margin: 2rem auto !important;
+    max-width: 500px !important;
+}
+
+.empty-state p,
+[class*="EmptyState"] p {
+    color: var(--muted-foreground) !important;
+    font-size: 1rem !important;
+}
+
+/* ============================================
+   SERVER CARDS ENHANCED
+   ============================================ */
+
+[class*="ServerCard"],
+[class*="Server-sc"],
+.server-card {
+    background: linear-gradient(135deg, rgba(30, 30, 63, 0.8) 0%, rgba(21, 21, 48, 0.9) 100%) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(46, 46, 94, 0.5) !important;
+    border-radius: 16px !important;
+    padding: 1.25rem !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+[class*="ServerCard"]:hover,
+[class*="Server-sc"]:hover,
+.server-card:hover {
+    border-color: rgba(255, 0, 200, 0.5) !important;
+    transform: translateY(-4px) !important;
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(255, 0, 200, 0.15) !important;
+}
+
+/* ============================================
+   NAVIGATION ENHANCED
+   ============================================ */
+
+nav,
+header,
+[class*="Navigation"],
+[class*="Navbar"],
+[class*="Header-sc"] {
+    background: linear-gradient(180deg, rgba(30, 30, 63, 0.95) 0%, rgba(12, 12, 29, 0.98) 100%) !important;
+    backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(46, 46, 94, 0.5) !important;
+}
+
+/* Navigation links hover */
+nav a:hover,
+[class*="Navigation"] a:hover,
+[class*="NavLink"]:hover {
+    color: var(--primary) !important;
+    text-shadow: 0 0 10px rgba(255, 0, 200, 0.5) !important;
+}
+
+/* ============================================
+   CONSOLE ENHANCED
+   ============================================ */
+
+[class*="Console"],
+[class*="Terminal"],
+.console,
+.terminal {
+    background: linear-gradient(180deg, #0a0a14 0%, #0c0c1d 100%) !important;
+    border: 1px solid rgba(46, 46, 94, 0.5) !important;
+    border-radius: 12px !important;
+    font-family: var(--font-mono) !important;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+[class*="Console"] .line,
+.console .line {
+    color: #00ffcc !important;
+}
+
+/* Console input */
+[class*="Console"] input,
+.console input {
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(0, 255, 204, 0.3) !important;
+    border-radius: 8px !important;
+    color: #00ffcc !important;
+    font-family: var(--font-mono) !important;
+}
+
+[class*="Console"] input:focus,
+.console input:focus {
+    border-color: rgba(0, 255, 204, 0.6) !important;
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.2) !important;
+}
+
+/* ============================================
+   BUTTONS ENHANCED
+   ============================================ */
+
+button,
+.btn,
+[class*="Button"] {
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+button::before,
+.btn::before,
+[class*="Button"]::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent) !important;
+    transition: left 0.5s ease !important;
+}
+
+button:hover::before,
+.btn:hover::before,
+[class*="Button"]:hover::before {
+    left: 100% !important;
+}
+
+/* ============================================
+   FOOTER ENHANCED
+   ============================================ */
+
+footer,
+[class*="Footer"] {
+    background: linear-gradient(180deg, rgba(12, 12, 29, 0.98) 0%, rgba(10, 10, 20, 1) 100%) !important;
+    border-top: 1px solid rgba(46, 46, 94, 0.3) !important;
+    padding: 1rem !important;
+}
+
+footer a,
+[class*="Footer"] a {
+    color: var(--muted-foreground) !important;
+    transition: color 0.2s ease !important;
+}
+
+footer a:hover,
+[class*="Footer"] a:hover {
+    color: var(--primary) !important;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+
+    .glass-card,
+    .neon-card,
+    [class*="Card"] {
+        border-radius: 12px !important;
+    }
+
+    .empty-state {
+        padding: 2rem 1rem !important;
+        margin: 1rem !important;
+    }
 }
